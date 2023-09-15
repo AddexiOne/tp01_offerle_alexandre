@@ -126,12 +126,20 @@
     </div>
 </footer>
 <script>
+    // validate with jquery the form on submit, validating that the password do match
     $(document).ready(function(){
-        $('#form1').on('submit', function(e){
+        $("#form1").submit(function(e){
             e.preventDefault();
-            var len = $('#prenom').val().length;
-            if (len < 6 && len > 1) {
-                alert('jsp')
+            if ($("#firstname").val() === "" || $("#lastname").val() === "" || $("#login").val() === "" || $("#password").val() === "" || $("#email").val() === "" || $("#city").val() === "" || $("#postalCode").val() === "" || $("#phone").val() === "" || $("#activity").val() === ""){
+                alert("Veuillez remplir tous les champs");
+            }
+            else if($("#password").val() !== $("#password-confirm").val()){
+                alert("Les mots de passe ne correspondent pas");
+            }
+
+            else{
+                alert("Inscription réussie");
+                this.submit();
             }
         });
     });
